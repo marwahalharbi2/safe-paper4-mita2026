@@ -1,0 +1,46 @@
+Model,Metric,Paper,Reproduced,Status
+Sentence-T5,SAFE standalone,78.63,78.63,OK
+Sentence-T5,Soft P,97.39,97.39,OK
+Sentence-T5,Soft R,73.07,73.07,OK
+Sentence-T5,Soft F1,83.49,83.49,OK
+Sentence-T5,Hard P,54.62,54.62,OK
+Sentence-T5,Hard R,44.07,44.07,OK
+Sentence-T5,Hard F1,48.78,48.78,OK
+GTR-T5,SAFE standalone,69.45,69.45,OK
+GTR-T5,Soft P,84.0,84.0,OK
+GTR-T5,Soft R,66.76,66.76,OK
+GTR-T5,Soft F1,74.4,74.4,OK
+GTR-T5,Hard P,54.62,54.62,OK
+GTR-T5,Hard R,43.95,43.95,OK
+GTR-T5,Hard F1,48.71,48.71,OK
+MPNet (SBERT),SAFE standalone,61.05,61.05,OK
+MPNet (SBERT),Soft P,69.55,69.55,OK
+MPNet (SBERT),Soft R,56.71,56.71,OK
+MPNet (SBERT),Soft F1,62.48,62.48,OK
+MPNet (SBERT),Hard P,50.47,50.47,OK
+MPNet (SBERT),Hard R,41.0,41.0,OK
+MPNet (SBERT),Hard F1,45.25,45.25,OK
+SimCSE (BERT),SAFE standalone,72.67,72.67,OK
+SimCSE (BERT),Soft P,83.77,83.77,OK
+SimCSE (BERT),Soft R,66.07,66.07,OK
+SimCSE (BERT),Soft F1,73.88,73.88,OK
+SimCSE (BERT),Hard P,54.62,54.62,OK
+SimCSE (BERT),Hard R,43.86,43.86,OK
+SimCSE (BERT),Hard F1,48.65,48.65,OK
+Embedding-based (MiniLM),SAFE standalone,62.15,62.15,OK
+Embedding-based (MiniLM),Soft P,70.5,70.5,OK
+Embedding-based (MiniLM),Soft R,57.43,57.43,OK
+Embedding-based (MiniLM),Soft F1,63.3,63.3,OK
+Embedding-based (MiniLM),Hard P,51.18,51.18,OK
+Embedding-based (MiniLM),Hard R,41.62,41.62,OK
+Embedding-based (MiniLM),Hard F1,45.91,45.91,OK
+Instruction-Tuned (E5),SAFE standalone,77.49,77.49,OK
+Instruction-Tuned (E5),Soft P,97.39,97.39,OK
+Instruction-Tuned (E5),Soft R,72.81,72.81,OK
+Instruction-Tuned (E5),Soft F1,83.32,83.32,OK
+Instruction-Tuned (E5),Hard P,54.62,54.62,OK
+Instruction-Tuned (E5),Hard R,43.9,43.9,OK
+Instruction-Tuned (E5),Hard F1,48.68,48.68,OK
+(all models),Strict P,10.55,10.55,OK
+(all models),Strict R,8.9,8.9,OK
+(all models),Strict F1,9.65,9.65,OK

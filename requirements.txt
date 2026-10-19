@@ -1,0 +1,7 @@
+# Versions used for the verified reproduction (45/45 numbers match)
+torch==2.14.1
+sentence-transformers==6.1.0
+transformers==5.20.1
+pandas==3.0.6
+matplotlib==3.11.2
+seaborn==0.13.2

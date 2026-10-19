@@ -1,0 +1,152 @@
+{
+  "Sentence-T5": {
+    "standalone": 78.63,
+    "Hard": {
+      "TP": 461,
+      "FP": 383,
+      "FN": 585,
+      "distinct_gold_matched": 415,
+      "PRF": [
+        54.62,
+        44.07,
+        48.78
+      ]
+    },
+    "Soft": {
+      "TP": 822,
+      "FP": 22,
+      "FN": 303,
+      "distinct_gold_matched": 697,
+      "PRF": [
+        97.39,
+        73.07,
+        83.49
+      ]
+    }
+  },
+  "GTR-T5": {
+    "standalone": 69.45,
+    "Hard": {
+      "TP": 461,
+      "FP": 383,
+      "FN": 588,
+      "distinct_gold_matched": 412,
+      "PRF": [
+        54.62,
+        43.95,
+        48.71
+      ]
+    },
+    "Soft": {
+      "TP": 709,
+      "FP": 135,
+      "FN": 353,
+      "distinct_gold_matched": 647,
+      "PRF": [
+        84.0,
+        66.76,
+        74.4
+      ]
+    }
+  },
+  "MPNet (SBERT)": {
+    "standalone": 61.05,
+    "Hard": {
+      "TP": 426,
+      "FP": 418,
+      "FN": 613,
+      "distinct_gold_matched": 387,
+      "PRF": [
+        50.47,
+        41.0,
+        45.25
+      ]
+    },
+    "Soft": {
+      "TP": 587,
+      "FP": 257,
+      "FN": 448,
+      "distinct_gold_matched": 552,
+      "PRF": [
+        69.55,
+        56.71,
+        62.48
+      ]
+    }
+  },
+  "SimCSE (BERT)": {
+    "standalone": 72.67,
+    "Hard": {
+      "TP": 461,
+      "FP": 383,
+      "FN": 590,
+      "distinct_gold_matched": 410,
+      "PRF": [
+        54.62,
+        43.86,
+        48.65
+      ]
+    },
+    "Soft": {
+      "TP": 707,
+      "FP": 137,
+      "FN": 363,
+      "distinct_gold_matched": 637,
+      "PRF": [
+        83.77,
+        66.07,
+        73.88
+      ]
+    }
+  },
+  "Embedding-based (MiniLM)": {
+    "standalone": 62.15,
+    "Hard": {
+      "TP": 432,
+      "FP": 412,
+      "FN": 606,
+      "distinct_gold_matched": 394,
+      "PRF": [
+        51.18,
+        41.62,
+        45.91
+      ]
+    },
+    "Soft": {
+      "TP": 595,
+      "FP": 249,
+      "FN": 441,
+      "distinct_gold_matched": 559,
+      "PRF": [
+        70.5,
+        57.43,
+        63.3
+      ]
+    }
+  },
+  "Instruction-Tuned (E5)": {
+    "standalone": 77.49,
+    "Hard": {
+      "TP": 461,
+      "FP": 383,
+      "FN": 589,
+      "distinct_gold_matched": 411,
+      "PRF": [
+        54.62,
+        43.9,
+        48.68
+      ]
+    },
+    "Soft": {
+      "TP": 822,
+      "FP": 22,
+      "FN": 307,
+      "distinct_gold_matched": 693,
+      "PRF": [
+        97.39,
+        72.81,
+        83.32
+      ]
+    }
+  }
+}
