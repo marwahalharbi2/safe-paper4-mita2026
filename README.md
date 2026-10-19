@@ -43,6 +43,63 @@ Models (Hugging Face IDs): `sentence-transformers/sentence-t5-base`, `sentence-t
 
 Settings: match threshold τ = 0.80, element weights λ = 0.25 each, soft penalty factor 0.50.
 
+## Equations as published
+
+Notation: a quadruple is (aspect *a*, opinion *o*, category *c*, sentiment *s*). $q = (y_a, y_o, y_c, y_s)$ is a reference quadruple in the reference set $Q$, and $\hat q = (\hat y_a, \hat y_o, \hat y_c, \hat y_s)$ is a predicted quadruple in the prediction set $\hat Q$.
+
+**SAFE standalone**
+
+$$\mathrm{SAFE}_{\mathrm{Standalone}}(\hat q, q) = \mathrm{Sim}(\hat q, q)$$
+
+**Hard SAFE and Soft SAFE**
+
+$$\mathrm{SAFE}_{\mathrm{Hard}}(\hat q, q) = \lambda_1 \mathrm{Sim}(y_a, \hat y_a) + \lambda_2 \mathrm{Sim}(y_o, \hat y_o) + \lambda_3 \mathrm{Exm}(y_c, \hat y_c) + \lambda_4 \mathrm{Exm}(y_s, \hat y_s)$$
+
+$$\mathrm{SAFE}_{\mathrm{Soft}}(\hat q, q) = \lambda_1 \mathrm{Sim}(y_a, \hat y_a) + \lambda_2 \mathrm{Sim}(y_o, \hat y_o) + \lambda_3 \mathrm{Sim}(y_c, \hat y_c) + \lambda_4 \mathrm{Sim}(y_s, \hat y_s)$$
+
+where $\mathrm{Exm}(y, \hat y) = 1$ if $y = \hat y$ and 0 otherwise, Sim is "cosine similarity between embedding vectors", and $\lambda_1 + \dots + \lambda_4 = 1$.
+
+**TP / FP / FN** (SAFE in either mode)
+
+$$\mathrm{TP}(\hat q, q) = \begin{cases} 1 & \text{if } \hat q \in (\hat Q \cap Q) \text{ and } \mathrm{SAFE}(\hat q, q) \ge \tau \\ 0 & \text{otherwise} \end{cases}$$
+
+$$\mathrm{FP}(\hat q, q) = \begin{cases} 1 & \text{if } \hat q \in (\hat Q \setminus Q) \text{ and } \mathrm{SAFE}(\hat q, q) < \tau \\ 0 & \text{otherwise} \end{cases}$$
+
+$$\mathrm{FN}(\hat q, q) = \begin{cases} 1 & \text{if } q \in (Q \setminus \hat Q) \text{ and } \mathrm{SAFE}(\hat q, q) < \tau \\ 0 & \text{otherwise} \end{cases}$$
+
+**Precision, Recall, F1**
+
+$$\mathrm{Precision}_{\mathrm{SAFE}} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}} \qquad \mathrm{Recall}_{\mathrm{SAFE}} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}} \qquad \mathrm{F1}_{\mathrm{SAFE}} = \frac{2 \cdot \mathrm{Precision}_{\mathrm{SAFE}} \cdot \mathrm{Recall}_{\mathrm{SAFE}}}{\mathrm{Precision}_{\mathrm{SAFE}} + \mathrm{Recall}_{\mathrm{SAFE}}}$$
+
+The next section gives the equations as implemented (and as now written in the thesis). The differences are listed under [Corrections in the thesis version](#corrections-in-the-thesis-version-chapter-6).
+
+## Equations as implemented (thesis Chapter 6)
+
+$$\mathrm{Sim}(y, \hat y) = \begin{cases} 1 & \text{if } y = \hat y \text{ (after lower-casing and trimming)} \\ \dfrac{\cos(\mathbf e_y, \mathbf e_{\hat y}) + 1}{2} & \text{otherwise} \end{cases}$$
+
+$$\mathrm{Pen}_\rho(y, \hat y) = \begin{cases} 1 & \text{if } y = \hat y \\ \rho & \text{otherwise} \end{cases}$$
+
+$$\mathrm{SAFE}_{\mathrm{mode}}(\hat q, q) = \lambda_1 \mathrm{Sim}(y_a, \hat y_a) + \lambda_2 \mathrm{Sim}(y_o, \hat y_o) + \lambda_3 \mathrm{Pen}_\rho(y_c, \hat y_c) + \lambda_4 \mathrm{Pen}_\rho(y_s, \hat y_s)$$
+
+with $\rho = 0$ for Hard SAFE (identical to the published Hard equation, since $\mathrm{Pen}_0 = \mathrm{Exm}$), $\rho = 0.5$ for Soft SAFE, $\lambda_1 = \dots = \lambda_4 = 0.25$, and $\tau = 0.80$.
+
+## Why Hard and Soft are designed this way
+
+Aspect and opinion are free-text spans. Their boundaries are subjective (annotators disagree on them), so they are always compared by embedding similarity. Category and sentiment are labels from a fixed set, and embedding similarity between label names says little: under the rescaled scale, *positive* vs *negative* can still score about 0.8. So a mismatched label gets a fixed credit ρ instead. Hard SAFE (ρ = 0) is meant for precision-critical uses, where a wrong label should count as a failure. Soft SAFE (ρ = 0.5) is meant for evaluating generative models, where near-misses should still earn credit.
+
+With τ = 0.80 and equal weights, this gives each mode a simple decision rule:
+
+| Labels wrong | Hard: max score | Soft: max score | Can it be a TP (≥ 0.80)? |
+|---|---|---|---|
+| none | 1.00 | 1.00 | both modes: yes, if aspect and opinion are close enough |
+| one | 0.75 | 0.875 | **Hard: never.** Soft: yes, if aspect and opinion have mean similarity ≥ 0.85 |
+| both | 0.50 | 0.75 | never |
+
+- **Hard SAFE** = labels must match exactly; only the aspect and opinion wording may vary.
+- **Soft SAFE** = additionally forgives **one** label error, when the spans are nearly identical.
+
+This is why Hard SAFE precision is identical (54.62%) for four of the six models: the label check decides almost every match, so the embedding model hardly matters. Under Soft SAFE the embedding model decides which spans count as close, so the models separate (F1 62.48–83.49).
+
 ## What the code computes
 
 Text is lower-cased and stripped. Quadruples are grouped by `Review ID`.
