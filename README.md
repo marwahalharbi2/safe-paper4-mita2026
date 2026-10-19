@@ -70,6 +70,19 @@ The code reproduces the published figure. In four places it differs from how the
 
 A corrected, one-to-one implementation is a separate piece of work and is not part of this repository.
 
+## Corrections in the thesis version (Chapter 6)
+
+The PhD thesis reprints this paper as Chapter 6. Its method text has been corrected so that it describes the code above. **No number or figure changed.** Differences from the published Version of Record:
+
+| # | Published paper | Thesis Chapter 6 |
+|---|---|---|
+| 1 | Soft SAFE compares category and sentiment with Sim | Soft SAFE gives a mismatched category or sentiment a fixed partial credit ρ = 0.5 (`Pen_ρ`) |
+| 2 | Sim is "cosine similarity" | Sim = 1 for identical strings, otherwise (cos + 1) / 2; the compressed scale is noted. The standalone score uses raw cosine |
+| 3 | TP/FP/FN written as set membership | Matching described as it runs: best match per prediction within a review, not one-to-one, so TP + FN can exceed the number of gold quads |
+| 4 | Empty (implicit) elements not mentioned | Stated: treated as the token "nan" in the F1 modes, skipped in the standalone score |
+| 5 | τ, λ not stated | τ = 0.80, λ = 0.25 each, ρ = 0.5 stated |
+| 6 | "Five" embedding models | Six: Sentence-T5 was in Fig. 2 but left out of the list |
+
 ## Environment used for this reproduction
 
 Python 3.11.9, torch 2.14.1 (CPU), sentence-transformers 6.1.0, transformers 5.20.1, pandas 3.0.6, Windows 11.
