@@ -102,9 +102,9 @@ $$\mathrm{FN}(\hat q, q) = \begin{cases} 1 & \text{if } q \in (Q \setminus \hat 
 
 $$\mathrm{Precision}_{\mathrm{SAFE}} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}} \qquad \mathrm{Recall}_{\mathrm{SAFE}} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}} \qquad \mathrm{F1}_{\mathrm{SAFE}} = \frac{2 \cdot \mathrm{Precision}_{\mathrm{SAFE}} \cdot \mathrm{Recall}_{\mathrm{SAFE}}}{\mathrm{Precision}_{\mathrm{SAFE}} + \mathrm{Recall}_{\mathrm{SAFE}}}$$
 
-The next section gives the equations as implemented (and as now written in the thesis). The differences are listed under [Corrections in the thesis version](#corrections-in-the-thesis-version-chapter-6).
+The next section gives the equations as implemented. The differences are summarised under [Published description vs. implementation](#published-description-vs-implementation).
 
-## Equations as implemented (thesis Chapter 6)
+## Equations as implemented
 
 $$\mathrm{Sim}(y, \hat y) = \begin{cases} 1 & \text{if } y = \hat y \text{ (after lower-casing and trimming)} \\ \dfrac{\cos(\mathbf e_y, \mathbf e_{\hat y}) + 1}{2} & \text{otherwise} \end{cases}$$
 
@@ -158,18 +158,18 @@ The code reproduces the published figure. In four places it differs from how the
 
 A corrected, one-to-one implementation is a separate piece of work and is not part of this repository.
 
-## Corrections in the thesis version (Chapter 6)
+## Published description vs. implementation
 
-The PhD thesis reprints this paper as Chapter 6. Its method text has been corrected so that it describes the code above. **No number or figure changed.** Differences from the published Version of Record:
+The code is the version that produced the published figure, so it is authoritative for the reported numbers. **No number or figure differs.** The table maps each point of the published method description to what the code does:
 
-| # | Published paper | Thesis Chapter 6 |
+| # | Published paper | Implementation |
 |---|---|---|
-| 1 | Soft SAFE compares category and sentiment with Sim | Soft SAFE gives a mismatched category or sentiment a fixed partial credit ρ = 0.5 (`Pen_ρ`) |
-| 2 | Sim is "cosine similarity" | Sim = 1 for identical strings, otherwise (cos + 1) / 2; the compressed scale is noted. The standalone score uses raw cosine |
-| 3 | TP/FP/FN written as set membership | Matching described as it runs: best match per prediction within a review, not one-to-one, so TP + FN can exceed the number of gold quads |
-| 4 | Empty (implicit) elements not mentioned | Stated: treated as the token "nan" in the F1 modes, skipped in the standalone score |
-| 5 | τ, λ not stated | τ = 0.80, λ = 0.25 each, ρ = 0.5 stated |
-| 6 | "Five" embedding models | Six: Sentence-T5 was in Fig. 2 but left out of the list |
+| 1 | Soft SAFE compares category and sentiment with Sim | A mismatched category or sentiment gets a fixed partial credit ρ = 0.5 (`Pen_ρ`) |
+| 2 | Sim is "cosine similarity" | Sim = 1 for identical strings, otherwise (cos + 1) / 2. The standalone score uses raw cosine |
+| 3 | TP/FP/FN written as set membership | Best match per prediction within a review, not one-to-one, so TP + FN can exceed the number of gold quads |
+| 4 | Empty (implicit) elements not mentioned | Treated as the token "nan" in the F1 modes; skipped in the standalone score |
+| 5 | τ, λ not stated | τ = 0.80, λ = 0.25 each, ρ = 0.5 |
+| 6 | "Five" embedding models | Six: Sentence-T5 appears in Fig. 2 but not in the paper's list |
 
 ## Environment used for this reproduction
 
