@@ -1,0 +1,14 @@
+{
+  "title": "SAFE: Reproduction Code and Data for \"A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis\" (MITA 2026)",
+  "upload_type": "software",
+  "description": "<p>Code and data that reproduce every result in Fig. 2 of: M. Alharbi, J. Yin, and Y. Miao, \"SAFE: A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis,\" 2026 13th International Conference on Machine Intelligence Theory and Applications (MiTA), IEEE, 2026, pp. 491-498. doi:10.1109/MITA69365.2026.11581671</p><p>SAFE evaluates quadruple aspect-based sentiment analysis (Quad-ABSA) outputs by semantic similarity instead of exact string matching. It reports a standalone similarity score and two thresholded F1 variants: Hard SAFE (exact category and sentiment labels required) and Soft SAFE (partial credit for a mismatched label).</p><p><b>Contents.</b> 1,000 human-annotated reference and 844 ChatGPT-predicted quadruples (231 hotel reviews); SAFE scoring for six sentence-embedding models (Sentence-T5, GTR-T5, MPNet, SimCSE, MiniLM, E5); Strict (exact-match) F1; a check script that compares every value with the paper and redraws Fig. 2; the original Colab notebook with saved outputs.</p><p><b>Reproducibility.</b> All 45 values in Fig. 2 are reproduced exactly. The README gives setup, the equations as published and as implemented, and notes where the implementation differs from the paper's written description (none of these affect the reported results).</p>",
+  "creators": [
+    {"name": "Alharbi, Marwah", "affiliation": "Victoria University", "orcid": "0009-0008-6614-7730"}
+  ],
+  "license": "cc-by-4.0",
+  "keywords": ["aspect-based sentiment analysis", "Quad-ABSA", "evaluation metrics", "semantic similarity", "large language models", "reproducibility"],
+  "related_identifiers": [
+    {"identifier": "10.1109/MITA69365.2026.11581671", "relation": "isSupplementTo", "resource_type": "publication-conferencepaper", "scheme": "doi"},
+    {"identifier": "10.5281/zenodo.23472391", "relation": "isNewVersionOf", "resource_type": "software", "scheme": "doi"}
+  ]
+}
