@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below and this software archive."
+title: "SAFE: Reproduction Code and Data for \"A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis\" (MITA 2026)"
+type: software
+version: v1.0
+date-released: 2026-10-19
+doi: 10.5281/zenodo.23472391
+license: CC-BY-4.0
+repository-code: "https://github.com/marwahalharbi2/safe-paper4-mita2026"
+authors:
+  - family-names: Alharbi
+    given-names: Marwah
+    affiliation: Victoria University
+preferred-citation:
+  type: conference-paper
+  title: "SAFE: A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis"
+  authors:
+    - family-names: Alharbi
+      given-names: Marwah
+    - family-names: Yin
+      given-names: Jiao
+    - family-names: Miao
+      given-names: Yuan
+  collection-title: "2026 13th International Conference on Machine Intelligence Theory and Applications (MiTA)"
+  publisher:
+    name: IEEE
+  year: 2026
+  start: 491
+  end: 498
+  doi: 10.1109/MITA69365.2026.11581671

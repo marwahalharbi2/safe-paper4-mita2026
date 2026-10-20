@@ -1,8 +1,39 @@
 # SAFE — Paper 4 reproduction (MITA 2026)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23472391.svg)](https://doi.org/10.5281/zenodo.23472391)
+[![Paper](https://img.shields.io/badge/IEEE-10.1109%2FMITA69365.2026.11581671-blue)](https://doi.org/10.1109/MITA69365.2026.11581671)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENSE)
+
 Code and data that reproduce every number in Fig. 2 of:
 
-> M. Alharbi, J. Yin, Y. Miao. *SAFE: A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis.* MITA 2026 (IEEE).
+> M. Alharbi, J. Yin, and Y. Miao, "SAFE: A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis," in *2026 13th International Conference on Machine Intelligence Theory and Applications (MiTA)*, IEEE, 2026, pp. 491–498. doi: [10.1109/MITA69365.2026.11581671](https://doi.org/10.1109/MITA69365.2026.11581671)
+
+## How to cite
+
+Please cite the paper, and the software archive if you use the code or data:
+
+```bibtex
+@inproceedings{alharbi2026safe,
+  author    = {Alharbi, Marwah and Yin, Jiao and Miao, Yuan},
+  title     = {{SAFE}: A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis},
+  booktitle = {2026 13th International Conference on Machine Intelligence Theory and Applications (MiTA)},
+  publisher = {IEEE},
+  year      = {2026},
+  pages     = {491--498},
+  doi       = {10.1109/MITA69365.2026.11581671}
+}
+
+@software{alharbi2026safe_code,
+  author    = {Alharbi, Marwah},
+  title     = {{SAFE}: Reproduction Code and Data for "A Semantic-Aware Flexible Evaluation Framework for Large Language Models-Based Sentiment Analysis" (MITA 2026)},
+  version   = {v1.0},
+  publisher = {Zenodo},
+  year      = {2026},
+  doi       = {10.5281/zenodo.23472391}
+}
+```
+
+GitHub's "Cite this repository" button (from `CITATION.cff`) gives the same information.
 
 Fig. 2 reports four panels for six embedding models: the standalone SAFE similarity score, and Precision / Recall / F1 under Strict (exact match), Hard SAFE and Soft SAFE.
 
