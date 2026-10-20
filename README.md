@@ -1,6 +1,6 @@
 # SAFE — Paper 4 reproduction (MITA 2026)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23472391.svg)](https://doi.org/10.5281/zenodo.23472391)
+[![DOI](https://zenodo.org/badge/1425440333.svg)](https://doi.org/10.5281/zenodo.23486470)
 [![Paper](https://img.shields.io/badge/IEEE-10.1109%2FMITA69365.2026.11581671-blue)](https://doi.org/10.1109/MITA69365.2026.11581671)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 
@@ -29,7 +29,7 @@ Please cite the paper, and the software archive if you use the code or data:
   version   = {v1.0},
   publisher = {Zenodo},
   year      = {2026},
-  doi       = {10.5281/zenodo.23472391}
+  doi       = {10.5281/zenodo.23486470}
 }
 ```
 
